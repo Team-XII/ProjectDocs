@@ -1,0 +1,309 @@
+/* =======================================
+   ROOT VARIABLES
+   ======================================= */
+:root {
+  /* Colors */
+  --primary-blue: #1E9EDB;
+  --dark-blue: #151538;
+  --text-dark: #454647;
+  --text-muted: #6C757D;
+  --white: #ffffff;
+  --card-colors: #7030A0, #F79646, #00B090, #FFC000, #FF5C34;
+
+  /* Fonts */
+  --font-sans: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+  /* Sizes */
+  --slider-card-width: 130px;
+  --bottom-nav-height: 65px;
+}
+
+/* =======================================
+   GLOBAL RESET
+   ======================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: var(--font-sans);
+}
+
+body {
+  background-color: #F8F9FA;
+  color: var(--text-dark);
+}
+
+/* =======================================
+   HEADER
+   ======================================= */
+.logo-header {
+  background-color: #F8F9FA;
+  height: 90px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-size {
+  height: 80px;
+}
+
+/* =======================================
+   WELCOME SECTION
+   ======================================= */
+.welcome {
+  padding: 0 12px;
+  margin-bottom: 10px;
+}
+
+.welcome__title {
+  font-size: 20px;
+  color: var(--primary-blue);
+}
+
+.welcome__subtitle {
+  font-size: 14px;
+  color: var(--text-dark);
+  margin-top: 4px;
+}
+
+/* =======================================
+   RECENT DOCUMENTS SLIDER
+   ======================================= */
+.slider {
+  padding: 10px 12px;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--white);
+  background-color: var(--dark-blue);
+  text-align: center;
+  border-radius: 6px;
+  padding: 6px 0;
+  margin-bottom: 8px;
+}
+
+.slider-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.slider__track {
+  display: flex;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  gap: 10px;
+  padding-left: 5px;
+}
+
+/* Document Cards */
+.doc-card {
+  min-width: var(--slider-card-width);
+  border-radius: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  flex-shrink: 0;
+  color: var(--white);
+}
+
+.doc-card__icon {
+  font-weight: bold;
+  margin-bottom: 6px;
+  font-size: 22px;
+  letter-spacing: 1px;
+}
+
+.doc-card__title {
+  font-weight: 600;
+  font-size: 13px;
+  margin-bottom: 2px;
+}
+
+.doc-card__date {
+  font-size: 11px;
+  color: var(--white);
+}
+
+/* Card Background Colors using nth-child */
+.doc-card:nth-child(1) { background-color: #7030A0; }
+.doc-card:nth-child(2) { background-color: #F79646; }
+.doc-card:nth-child(3) { background-color: #00B090; }
+.doc-card:nth-child(4) { background-color: #FFC000; color: #000; }
+.doc-card:nth-child(5) { background-color: #FF5C34; }
+
+/* Override light card text color */
+.doc-card:nth-child(4) .doc-card__date { color: #000; }
+
+/* Slider Buttons */
+.slider-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background-color: var(--primary-blue);
+  color: var(--white);
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+}
+
+.slider-btn--left { left: -8px; }
+.slider-btn--right { right: -8px; }
+
+/* =======================================
+   CREATE TEMPLATES SECTION
+   ======================================= */
+.create {
+  padding: 12px;
+}
+
+.btn-toggle-create {
+  display: block;
+  margin: 8px auto 12px auto;
+  padding: 8px 14px;
+  border: 1px solid white;
+  background-color: var(--dark-blue);
+  color: var(--white);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.btn-toggle-create:hover {
+  background-color: var(--dark-blue);
+}
+
+/* Grid for create cards */
+.create-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  transition: max-height 0.3s ease, opacity 0.25s ease, margin 0.3s ease;
+  overflow: hidden;
+  max-height: 2000px;
+  opacity: 1;
+  margin-bottom: 70px;
+}
+
+.create-grid--hidden {
+  max-height: 0;
+  opacity: 0;
+  margin: 0;
+}
+
+/* Create Card */
+.create-card {
+  background-color: var(--white);
+  border-radius: 14px;
+  min-height: 115px;
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.create-card:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+}
+
+/* Create Icon */
+.create-card__icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 12px;
+  background-color: rgba(30, 158, 219, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.create-card__icon img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+/* Create Label */
+.create-card__label {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-dark);
+  text-align: center;
+}
+
+/* Responsive Grid for tablets */
+@media (min-width: 600px) {
+  .create-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* =======================================
+   BOTTOM NAVIGATION
+   ======================================= */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: var(--bottom-nav-height);
+  background-color: var(--dark-blue);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-shadow: 0 -2px 6px rgba(0,0,0,0.1);
+  z-index: 1000;
+  padding: 0 5%;
+  box-sizing: border-box;
+}
+
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+  color: var(--white);
+  cursor: pointer;
+  flex: 1;
+}
+
+.nav-item--active {
+  color: var(--primary-blue);
+}
+
+.nav-icon img.footer-icon {
+  width: 25px;
+  height: 25px;
+  margin-bottom: 2px;
+}
+
+/* =======================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================= */
+@media (max-width: 450px) {
+  .logo-header { height: 110px; }
+  .logo-size { height: 100px; }
+  .welcome__title { font-size: 20px; }
+  .welcome__subtitle { font-size: 13px; }
+  .doc-card { min-width: var(--slider-card-width); padding: 8px; }
+  .create-card { min-height: 110px; padding: 12px 8px; }
+  .create-card__icon { width: 56px; height: 56px; }
+  .create-card__icon img { width: 36px; height: 36px; }
+}

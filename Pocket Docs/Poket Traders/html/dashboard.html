@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Gas App Login</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+/* ===== PAGE LAYOUT ===== */
+body {
+  background-color: var(--off-white);
+  font-family: Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+  margin:0;
+}
+
+.login-card {
+  background-color: var(--light-grey);
+  padding:40px;
+  border-radius:12px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.1);
+  width:350px;
+  max-width:90%;
+}
+
+/* Header / Logo */
+.login-card h1 {
+  background-color: var(--primary-blue);
+  color:white;
+  text-align:center;
+  padding:15px 0;
+  border-radius:8px 8px 0 0;
+  margin:-40px -40px 30px -40px;
+  font-size:1.5rem;
+}
+
+/* Inputs */
+.input-group {
+  display:flex;
+  align-items:center;
+  margin-bottom:20px;
+  background-color:white;
+  border-radius:6px;
+  border:2px solid var(--secondary-blue);
+  padding:5px 10px;
+}
+
+.input-group img {
+  width:20px;
+  height:20px;
+  margin-right:10px;
+}
+
+.input-group input {
+  border:none;
+  outline:none;
+  width:100%;
+  padding:10px 0;
+  font-size:1rem;
+}
+
+/* Input focus */
+.input-group input:focus {
+  border-color: var(--accent-blue);
+}
+
+/* Buttons */
+button.login-btn {
+  width:100%;
+  padding:12px;
+  background-color: var(--cta-red);
+  color:white;
+  font-weight:bold;
+  border:none;
+  border-radius:6px;
+  cursor:pointer;
+  transition:0.3s;
+  font-size:1rem;
+  margin-bottom:15px;
+}
+button.login-btn:hover {
+  background-color: var(--warning-orange);
+}
+
+/* Secondary links */
+.secondary-actions {
+  text-align:center;
+  font-size:0.9rem;
+}
+.secondary-actions a {
+  color: var(--accent-blue);
+  text-decoration:none;
+  font-weight:bold;
+  margin:0 5px;
+}
+.secondary-actions a:hover {
+  text-decoration:underline;
+}
+
+/* Alerts */
+.alert {
+  padding:10px;
+  margin-bottom:15px;
+  border-radius:6px;
+  color:white;
+  font-weight:bold;
+  text-align:center;
+}
+.alert-error { background-color: var(--cta-red); }
+.alert-warning { background-color: var(--warning-orange); }
+
+</style>
+</head>
+<body>
+
+<div class="login-card">
+  <h1>Gas App Login</h1>
+
+  <!-- Example alerts -->
+  <div class="alert alert-error" style="display:none;">Invalid username or password</div>
+  <div class="alert alert-warning" style="display:none;">Your session expired</div>
+
+  <!-- Email / Username -->
+  <div class="input-group">
+    <img src="icon-user.svg" alt="User Icon">
+    <input type="text" placeholder="Email or Username">
+  </div>
+
+  <!-- Password -->
+  <div class="input-group">
+    <img src="icon-lock.svg" alt="Lock Icon">
+    <input type="password" placeholder="Password">
+  </div>
+
+  <!-- Login Button -->
+  <button class="login-btn">Login</button>
+
+  <!-- Secondary Actions -->
+  <div class="secondary-actions">
+    <a href="#">Forgot Password?</a> | <a href="#">Sign Up</a>
+  </div>
+
+</div>
+
+</body>
+</html>
