@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pocket Docs Dashboard</title>
+  <link rel="stylesheet" href="pland.css" />
+</head>
+
+<body>
+
+  <!-- =========================
+       HEADER
+       ========================= -->
+  <header class="logo-header">
+    <img src="/Icons/2 (1).png" alt="Pocket Docs Logo" class="logo-size" />
+  </header>
+
+  <!-- =========================
+       WELCOME
+       ========================= -->
+  <section class="welcome">
+    <h1 class="welcome__title">Welcome back, John</h1>
+    <p class="welcome__subtitle">Here’s your catch up for today</p>
+  </section>
+
+  <!-- =========================
+       RECENT DOCUMENTS
+       ========================= -->
+  <section class="slider">
+    <div class="section-title">Recent Documents</div>
+
+    <div class="slider-wrapper">
+      <button class="slider-btn slider-btn--left" aria-label="Scroll left">&#10094;</button>
+
+      <div class="slider__track" id="recentDocsTrack">
+        <article class="doc-card">
+          <div class="doc-card__icon">PDF</div>
+          <div class="doc-card__title">Project Report</div>
+          <div class="doc-card__date">2 days ago</div>
+        </article>
+        <article class="doc-card">
+          <div class="doc-card__icon">DOC</div>
+          <div class="doc-card__title">Client Proposal</div>
+          <div class="doc-card__date">1 day ago</div>
+        </article>
+        <article class="doc-card">
+          <div class="doc-card__icon">XLS</div>
+          <div class="doc-card__title">Budget Plan</div>
+          <div class="doc-card__date">3 days ago</div>
+        </article>
+        <article class="doc-card">
+          <div class="doc-card__icon">PDF</div>
+          <div class="doc-card__title">Meeting Notes</div>
+          <div class="doc-card__date">4 days ago</div>
+        </article>
+        <article class="doc-card">
+          <div class="doc-card__icon">DOC</div>
+          <div class="doc-card__title">Contract Draft</div>
+          <div class="doc-card__date">5 days ago</div>
+        </article>
+      </div>
+
+      <button class="slider-btn slider-btn--right" aria-label="Scroll right">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- =========================
+       CREATE TEMPLATES
+       ========================= -->
+  <section class="create">
+    <div class="section-title">Create   
+      <button class="btn-toggle-create" id="toggleCreateBtn">Hide templates
+      </button>
+    </div>
+
+    <div class="create-grid" id="createGrid">
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/customer (1).png" alt="Client" />
+        </div>
+        <div class="create-card__label">Client</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/quotation.png" alt="Quote" />
+        </div>
+        <div class="create-card__label">Quote</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/invoice.png" alt="Invoice" />
+        </div>
+        <div class="create-card__label">Invoice</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/contract.png" alt="Contract" />
+        </div>
+        <div class="create-card__label">Contract</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/stats.png" alt="Budget Sheet" />
+        </div>
+        <div class="create-card__label">Budget Sheet</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/privacy-policy.png" alt="Policy" />
+        </div>
+        <div class="create-card__label">Policy</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/crisis.png" alt="Risk Assessment" />
+        </div>
+        <div class="create-card__label">Risk Assessment</div>
+      </article>
+
+      <article class="create-card">
+        <div class="create-card__icon">
+          <img src="/Icons/notes.png" alt="Job Notes" />
+        </div>
+        <div class="create-card__label">Job Notes</div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- =========================
+       BOTTOM NAVIGATION
+       ========================= -->
+  <nav class="bottom-nav">
+    <div class="nav-item nav-item--active">
+      <div class="nav-icon">
+        <img src="/Icons/home.png" alt="Home" class="footer-icon" />
+      </div>
+      <span>Dash</span>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">
+        <img src="/Icons/template.png" alt="Docs" class="footer-icon" />
+      </div>
+      <span>Docs</span>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">
+        <img src="/Icons/people (1).png" alt="Clients" class="footer-icon" />
+      </div>
+      <span>Clients</span>
+    </div>
+
+    <div class="nav-item">
+      <div class="nav-icon">
+        <img src="/Icons/settings (1).png" alt="Settings" class="footer-icon" />
+      </div>
+      <span>Settings</span>
+    </div>
+  </nav>
+
+  <!-- =========================
+       JAVASCRIPT
+       ========================= -->
+  <script>
+    // Slider
+    const track = document.getElementById('recentDocsTrack');
+    const scrollAmount = 130;
+
+    document.querySelector('.slider-btn--left')
+      .addEventListener('click', () => {
+        track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+    document.querySelector('.slider-btn--right')
+      .addEventListener('click', () => {
+        track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+    // Create toggle
+    const toggleBtn = document.getElementById('toggleCreateBtn');
+    const createGrid = document.getElementById('createGrid');
+
+    toggleBtn.addEventListener('click', () => {
+      const isHidden = createGrid.classList.toggle('create-grid--hidden');
+      toggleBtn.textContent = isHidden ? 'Show templates' : 'Hide templates';
+    });
+  </script>
+
+</body>
+</html>

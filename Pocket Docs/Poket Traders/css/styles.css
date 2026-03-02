@@ -1,0 +1,213 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #F5F5F5;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.palette-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.palette {
+    width: 300px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+/* Card inside palette */
+.card {
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    line-height: 1.5;
+}
+
+/* Buttons */
+.primary-btn, .accent-btn {
+    border: none;
+    padding: 10px 15px;
+    margin-right: 10px;
+    margin-top: 10px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- Palette Colors --- */
+
+/* 1. Deep Ocean */
+.palette1 { background-color: #004E64; color: #FFFFFF; }
+.palette1 .card { background-color: #E0F7FA; color: #004E64; }
+.palette1 .primary-btn { background-color: #004E64; color: #FFFFFF; }
+.palette1 .primary-btn:hover { background-color: #003B4D; }
+.palette1 .accent-btn { background-color: #00B8D9; color: #FFFFFF; }
+.palette1 .accent-btn:hover { background-color: #0095B0; }
+
+/* 2. Sunrise */
+.palette2 { background-color: #FF6B6B; color: #2E2E2E; }
+.palette2 .card { background-color: #FFF5E1; color: #2E2E2E; }
+.palette2 .primary-btn { background-color: #FF6B6B; color: #FFFFFF; }
+.palette2 .primary-btn:hover { background-color: #E65A5A; }
+.palette2 .accent-btn { background-color: #FFD93D; color: #2E2E2E; }
+.palette2 .accent-btn:hover { background-color: #E6C230; }
+
+/* 3. Industrial Steel */
+.palette3 { background-color: #3A3A3A; color: #FFD600; }
+.palette3 .card { background-color: #EDEDED; color: #3A3A3A; }
+.palette3 .primary-btn { background-color: #3A3A3A; color: #FFD600; }
+.palette3 .primary-btn:hover { background-color: #2B2B2B; }
+.palette3 .accent-btn { background-color: #FF9F1C; color: #FFFFFF; }
+.palette3 .accent-btn:hover { background-color: #E68B16; }
+
+/* 4. Forest Tech */
+.palette4 { background-color: #2C5F2D; color: #FFFFFF; }
+.palette4 .card { background-color: #F0F5F1; color: #2C5F2D; }
+.palette4 .primary-btn { background-color: #2C5F2D; color: #FFFFFF; }
+.palette4 .primary-btn:hover { background-color: #224823; }
+.palette4 .accent-btn { background-color: #A3C93A; color: #2C5F2D; }
+.palette4 .accent-btn:hover { background-color: #8FB333; }
+
+/* 5. Skyline */
+.palette5 { background-color: #1E3A5F; color: #FFFFFF; }
+.palette5 .card { background-color: #DCE3F0; color: #1E3A5F; }
+.palette5 .primary-btn { background-color: #1E3A5F; color: #FFFFFF; }
+.palette5 .primary-btn:hover { background-color: #14283A; }
+.palette5 .accent-btn { background-color: #F78F1E; color: #FFFFFF; }
+.palette5 .accent-btn:hover { background-color: #E27218; }
+
+/* 6. Safety First */
+.palette6 { background-color: #D32F2F; color: #FFFFFF; }
+.palette6 .card { background-color: #F7F7F7; color: #D32F2F; }
+.palette6 .primary-btn { background-color: #D32F2F; color: #FFFFFF; }
+.palette6 .primary-btn:hover { background-color: #B12626; }
+.palette6 .accent-btn { background-color: #FFD600; color: #333333; }
+.palette6 .accent-btn:hover { background-color: #E6C500; }
+
+/* 7. Cool Steel */
+.palette7 { background-color: #2F4F4F; color: #FFFFFF; }
+.palette7 .card { background-color: #F2F2F2; color: #2F4F4F; }
+.palette7 .primary-btn { background-color: #2F4F4F; color: #FFFFFF; }
+.palette7 .primary-btn:hover { background-color: #234242; }
+.palette7 .accent-btn { background-color: #00CED1; color: #FFFFFF; }
+.palette7 .accent-btn:hover { background-color: #00A9AB; }
+
+/* 8. Urban Modern */
+.palette8 { background-color: #1F1F1F; color: #FFFFFF; }
+.palette8 .card { background-color: #E0E0E0; color: #1F1F1F; }
+.palette8 .primary-btn { background-color: #1F1F1F; color: #FF4081; }
+.palette8 .primary-btn:hover { background-color: #161616; }
+.palette8 .accent-btn { background-color: #FF4081; color: #FFFFFF; }
+.palette8 .accent-btn:hover { background-color: #E63770; }
+
+/* 9. Energy Flow */
+.palette9 { background-color: #FF5722; color: #212121; }
+.palette9 .card { background-color: #FFF8E1; color: #212121; }
+.palette9 .primary-btn { background-color: #FF5722; color: #FFFFFF; }
+.palette9 .primary-btn:hover { background-color: #E64A1D; }
+.palette9 .accent-btn { background-color: #FFC107; color: #212121; }
+.palette9 .accent-btn:hover { background-color: #E6AC06; }
+
+/* 10. Calm Blue */
+.palette10 { background-color: #1565C0; color: #FFFFFF; }
+.palette10 .card { background-color: #E3F2FD; color: #1565C0; }
+.palette10 .primary-btn { background-color: #1565C0; color: #FFFFFF; }
+.palette10 .primary-btn:hover { background-color: #0D3A81; }
+.palette10 .accent-btn { background-color: #64B5F6; color: #1565C0; }
+.palette10 .accent-btn:hover { background-color: #4A9FE0; }
+
+/* 11. Ocean Breeze */
+.palette11 { background-color: #0077B6; color: #FFFFFF; }
+.palette11 .card { background-color: #CAF0F8; color: #0077B6; }
+.palette11 .primary-btn { background-color: #0077B6; color: #FFFFFF; }
+.palette11 .primary-btn:hover { background-color: #005A87; }
+.palette11 .accent-btn { background-color: #90E0EF; color: #0077B6; }
+.palette11 .accent-btn:hover { background-color: #70C3E0; }
+
+/* 12. Sunset Glow */
+.palette12 { background-color: #FF4500; color: #2E2E2E; }
+.palette12 .card { background-color: #FFF5E6; color: #2E2E2E; }
+.palette12 .primary-btn { background-color: #FF4500; color: #FFFFFF; }
+.palette12 .primary-btn:hover { background-color: #E03D00; }
+.palette12 .accent-btn { background-color: #FFD700; color: #2E2E2E; }
+.palette12 .accent-btn:hover { background-color: #E6C200; }
+
+/* 13. Steel Blue */
+.palette13 { background-color: #4682B4; color: #FFFFFF; }
+.palette13 .card { background-color: #E8F0F8; color: #4682B4; }
+.palette13 .primary-btn { background-color: #4682B4; color: #FFFFFF; }
+.palette13 .primary-btn:hover { background-color: #35648F; }
+.palette13 .accent-btn { background-color: #B0C4DE; color: #4682B4; }
+.palette13 .accent-btn:hover { background-color: #8FAACF; }
+
+/* 14. Forest Shade */
+.palette14 { background-color: #1B4332; color: #FFFFFF; }
+.palette14 .card { background-color: #E8F6F3; color: #1B4332; }
+.palette14 .primary-btn { background-color: #1B4332; color: #FFFFFF; }
+.palette14 .primary-btn:hover { background-color: #143026; }
+.palette14 .accent-btn { background-color: #95D5B2; color: #1B4332; }
+.palette14 .accent-btn:hover { background-color: #78C69B; }
+
+/* 15. Crimson Alert */
+.palette15 { background-color: #B71C1C; color: #FFFFFF; }
+.palette15 .card { background-color: #F9F0F0; color: #B71C1C; }
+.palette15 .primary-btn { background-color: #B71C1C; color: #FFFFFF; }
+.palette15 .primary-btn:hover { background-color: #931515; }
+.palette15 .accent-btn { background-color: #FFCDD2; color: #B71C1C; }
+.palette15 .accent-btn:hover { background-color: #E6B0B0; }
+
+/* 16. Electric Lime */
+.palette16 { background-color: #32CD32; color: #333333; }
+.palette16 .card { background-color: #F0FFF0; color: #32CD32; }
+.palette16 .primary-btn { background-color: #32CD32; color: #FFFFFF; }
+.palette16 .primary-btn:hover { background-color: #28A428; }
+.palette16 .accent-btn { background-color: #ADFF2F; color: #333333; }
+.palette16 .accent-btn:hover { background-color: #9CE126; }
+
+/* 17. Midnight Tech */
+.palette17 { background-color: #121212; color: #FFFFFF; }
+.palette17 .card { background-color: #1E1E1E; color: #BB86FC; }
+.palette17 .primary-btn { background-color: #121212; color: #BB86FC; }
+.palette17 .primary-btn:hover { background-color: #0D0D0D; }
+.palette17 .accent-btn { background-color: #BB86FC; color: #121212; }
+.palette17 .accent-btn:hover { background-color: #9B6DEB; }
+
+/* 18. Coral Reef */
+.palette18 { background-color: #FF6F61; color: #333333; }
+.palette18 .card { background-color: #FFF2F0; color: #FF6F61; }
+.palette18 .primary-btn { background-color: #FF6F61; color: #FFFFFF; }
+.palette18 .primary-btn:hover { background-color: #E65C50; }
+.palette18 .accent-btn { background-color: #FFB3AB; color: #333333; }
+.palette18 .accent-btn:hover { background-color: #E6A09A; }
+
+/* 19. Aqua Pulse */
+.palette19 { background-color: #00BFFF; color: #004466; }
+.palette19 .card { background-color: #E6F7FF; color: #004466; }
+.palette19 .primary-btn { background-color: #00BFFF; color: #FFFFFF; }
+.palette19 .primary-btn:hover { background-color: #0096CC; }
+.palette19 .accent-btn { background-color: #7FDBFF; color: #004466; }
+.palette19 .accent-btn:hover { background-color: #66CCFF; }
+
+/* 20. Golden Hour */
+.palette20 { background-color: #FFC107; color: #333333; }
+.palette20 .card { background-color: #FFF8E1; color: #333333; }
+.palette20 .primary-btn { background-color: #FFC107; color: #333333; }
+.palette20 .primary-btn:hover { background-color: #E6AC06; }
+.palette20 .accent-btn { background-color: #FFEB3B; color: #333333; }
+.palette20 .accent-btn:hover { background-color: #E6DB2F; }

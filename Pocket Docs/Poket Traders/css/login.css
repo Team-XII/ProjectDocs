@@ -1,0 +1,223 @@
+/* ---------- Login Page - Midnight Tech ---------- */
+:root {
+    --bg-color: #121212;
+    --text-color: #FFFFFF;
+    --card-bg: #1F1F1F;
+    --card-text: #E0BBFF;
+    --input-bg: #2A2A2A;
+    --input-text: #FFFFFF;
+    --input-placeholder: #AAAAAA;
+    --primary-btn-bg: #BB86FC;
+    --primary-btn-text: #121212;
+    --primary-btn-hover: #9B6DEB;
+    --social-google-bg: #FFFFFF;
+    --social-google-text: #121212;
+    --social-google-hover: #E0E0E0;
+    --social-apple-bg: #121212;
+    --social-apple-text: #FFFFFF;
+    --social-apple-hover: #1F1F1F;
+
+    --dark-navy:#112231;
+    --orange:#FE6B1B;
+    --coral:#FF4F40;
+    --bright-lime: #C3FF34;
+    --off-white: #F2F8F3;
+    --coral-hover: #fc6d60;
+
+--monzo-hot-coral:    #FF4F40;
+--monzo-off-white:    #F2F8F3;
+--monzo-deep-navy:    #112231;
+--monzo-blue-green:   #016B83;
+--monzo-light-pink:   #FFD7F0;
+--monzo-bright-lime:  #C3FF34;
+--monzo-orange:       #FE6B1B;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;fkgkiriirii
+    padding: 0;
+}
+
+body {
+    background-color: var(--dark-navy);
+    color: var(--text-color);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.login-card {
+    background-color: var(--dark-navy);
+    color: var(--card-text);
+    border-radius: 12px;
+    padding: 32px 24px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.login-card h1 {
+    text-align: center;
+    margin-bottom: 24px;
+    color: var(--off-white);
+}
+
+/* ---------- Input Fields ---------- */
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 40px 12px 40px; /* left icon + right space for eye toggle */
+    border-radius: 8px;
+    border: none;
+    background-color: var(--off-white);
+    color: var(--dark-navy);
+    font-size: 16px;
+}
+
+.input-group input::placeholder {
+    color: var(--dark-navy);
+}
+
+/* Input icons */
+.input-group .input-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.input-group .input-icon img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+}
+
+/* Password toggle eye icon */
+.password-group .password-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.password-toggle .eye-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+/* Focus outline for accessibility */
+.input-group input:focus {
+    outline: 2px solid var(--text-color);
+}
+
+/* ---------- Primary Button ---------- */
+.primary-btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: var(--bright-lime);
+    color: var(--primary-btn-text);
+    font-weight: bold;
+    cursor: pointer;
+    margin-bottom: 16px;
+    transition: background-color 0.7s ease;
+    font-size: 16px;
+}
+
+.primary-btn:hover {
+    background-color: var(--coral);
+    color: var(--off-white);
+}
+
+/* ---------- Divider ---------- */
+.divider {
+    text-align: center;
+    margin: 16px 0;
+    font-size: 14px;
+    color: var(--input-placeholder);
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: "";
+    display: inline-block;
+    width: 35%;
+    height: 1px;
+    background-color: var(--input-placeholder);
+    vertical-align: middle;
+    margin: 0 8px;
+}
+
+/* ---------- Social Buttons ---------- */
+.social-btn {
+    width: 100%;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    position: relative;
+    transition: background-color 0.2s ease;
+    font-size: 16px;
+    text-align: center;
+    padding-left: 48px; /* leave space for icon */
+}
+
+.social-btn .apple-google {
+    position: absolute;
+    left: 12px;
+    width: 24px;
+    height: 24px;
+}
+
+/* Google button */
+.social-google {
+    background-color: var(--off-white);
+    color: var(--social-google-text);
+}
+
+.social-google:hover {
+    background-color: var(--social-google-hover);
+}
+
+/* Apple button */
+.social-apple {
+    background-color: var(--coral);
+    color: var(--social-apple-text);
+}
+
+.social-apple:hover {
+    background-color: var(--coral-hover);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 768px) {
+    .login-card {
+        padding: 28px 16px;
+    }
+}
