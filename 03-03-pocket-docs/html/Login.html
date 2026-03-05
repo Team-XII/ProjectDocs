@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/Styles.css">
+  <title>Pocket Docs Login</title>
+</head>
+
+<body>
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo">
+      <img src="/Icons/2 (1).png" alt="Pocket Docs Logo">
+    </div>
+
+    <!-- Header -->
+    <div class="login-header">
+      <h1>Welcome Back to Pocket Docs</h1>
+      <p>Sign in to access your professional documents and continue your work.</p>
+    </div>
+
+    <!-- Input Fields -->
+    <form class="login-form">
+      <div class="input-group">
+        <input type="email" placeholder="Email Address" required>
+      </div>
+<div class="input-group">
+  <input type="password" id="password" placeholder="Password" required>
+
+  <span class="toggle-password" id="togglePassword">
+    <img 
+      id="passwordIcon"
+      class="eye-size"
+      src="/Icons/show (1).svg" 
+      alt="Show Password"
+    >
+  </span>
+</div>
+
+      <!-- Options -->
+      <div class="options">
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <label class="remember-me">
+          <input type="checkbox">
+          Remember Me
+        </label>
+      </div>
+
+      <!-- Login Button -->
+       <a href="Landing-page.html"><button type="button" class="btn-login">Login</button></a>
+      
+
+      <!-- Alternative Login -->
+      <div class="alternative-login">
+        <span>OR</span>
+        <button type="button" class="btn-google">
+          <img src="/Icons/search (2).png" alt="Google Icon">
+          Login with Google
+        </button>
+        <button type="button" class="btn-apple">
+          <img src="/Icons/apple.png" alt="Apple Icon">
+          Login with Apple
+        </button>
+      </div>
+
+<!-- Sign Up Link -->
+<div class="signup-link">
+  <p>Don't have an account? <a href="Sign-up.html">Sign Up</a></p>
+</div>
+    </form>
+  </div>
+
+  <!--java-->
+  <script src="/js/script.js"></script>
+  
+</body>
+</html>
