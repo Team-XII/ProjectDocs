@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pocket Docs Dash</title>
+  <link rel="stylesheet" href="/css/Styles.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="logo">
+      <img src="/Icons/2 (1).png" alt="Pocket Docs Logo">  
+    </div>
+    <div class="top-icons">
+      <!-- Optional: Add icons if needed -->
+    </div>
+  </header>
+
+  <!-- Greeting -->
+  <section class="greeting">
+    <h2>Good Morning, John!</h2>
+    <p>Here's your documents and tasks for today.</p>
+  </section>
+
+  <!-- Recent Documents Slider -->
+  <section class="recent-docs">
+    <div class="section-header">Quick Doc Create</div>
+    <div class="slider-wrapper">
+      <button class="slider-btn left">&#10094;</button>
+      <div class="cards-container" id="docs-container">
+        <div class="doc-card">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-info">
+            <p class="doc-title">Project Report</p>
+            <p class="doc-date">2 days ago</p>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">DOC</div>
+          <div class="doc-info">
+            <p class="doc-title">Client Proposal</p>
+            <p class="doc-date">1 day ago</p>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">XLS</div>
+          <div class="doc-info">
+            <p class="doc-title">Budget Plan</p>
+            <p class="doc-date">3 days ago</p>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">PDF</div>
+          <div class="doc-info">
+            <p class="doc-title">Meeting Notes</p>
+            <p class="doc-date">4 days ago</p>
+          </div>
+        </div>
+        <div class="doc-card">
+          <div class="doc-icon">DOC</div>
+          <div class="doc-info">
+            <p class="doc-title">Contract Draft</p>
+            <p class="doc-date">5 days ago</p>
+          </div>
+        </div>
+      </div>
+      <button class="slider-btn right">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Quick Actions -->
+  <section class="quick-actions">
+    <h3>Quick Actions</h3>
+    <div class="actions-container">
+      <div class="action-btn"><span class="action-icon">&#8682;</span><span>Upload</span></div>
+      <div class="action-btn"><span class="action-icon">&#9998;</span><span>New Doc</span></div>
+      <div class="action-btn"><span class="action-icon">&#128247;</span><span>Scan</span></div>
+      <div class="action-btn"><span class="action-icon">&#128257;</span><span>Share</span></div>
+    </div>
+  </section>
+
+  <!-- Categories -->
+  <section class="categories">
+    <h3>Categories</h3>
+    <div class="category-buttons">
+      <button class="category active">All</button>
+      <button class="category">Work</button>
+      <button class="category">Personal</button>
+      <button class="category">Shared</button>
+    </div>
+  </section>
+
+  <!-- Bottom Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-nav="dashboard">
+      <span class="nav-icon">
+        <a href="/html/Landing-page.html"><img src="/Icons/dashboards.svg" alt="Dashboard" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Dashboard</span>
+    </div>
+    <div class="nav-item" data-nav="documents">
+      <span class="nav-icon">
+        <a href="/html/use-template-page.html"><img src="/Icons/add-file.svg" alt="Documents" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Docs</span>
+    </div>
+    <div class="nav-item" data-nav="upload">
+      <span class="nav-icon">
+        <a href="/html/upload.html"><img src="/Icons/upload (1).svg" alt="Upload" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Upload</span>
+    </div>
+    <div class="nav-item" data-nav="scan">
+      <span class="nav-icon">
+        <a href="/html/scan.html"><img src="/Icons/scan.svg" alt="Scan" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Scan</span>
+    </div>
+    <div class="nav-item" data-nav="profile">
+      <span class="nav-icon">
+        <a href="/html/customer.html"><img src="/Icons/people (1).png" alt="Customers" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Customers</span>
+    </div>
+  </nav>
+
+</div>
+
+<!-- JavaScript -->
+<script>
+/* Slider functionality */
+(function() {
+  const container = document.getElementById('docs-container');
+  const btnLeft = document.querySelector('.slider-btn.left');
+  const btnRight = document.querySelector('.slider-btn.right');
+  const cardWidth = 130;
+
+  btnLeft.addEventListener('click', () => container.scrollBy({ left: -cardWidth, behavior: 'smooth' }));
+  btnRight.addEventListener('click', () => container.scrollBy({ left: cardWidth, behavior: 'smooth' }));
+})();
+
+/* Bottom nav active state */
+(function() {
+  const navItems = document.querySelectorAll('.bottom-nav .nav-item');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => {
+      navItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

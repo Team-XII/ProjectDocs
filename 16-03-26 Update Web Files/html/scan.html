@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <title>Pocket Docs upload</title>
+  <link rel="stylesheet" href="/css/Styles.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="logo">
+      <img src="/Icons/2 (1).png" alt="Pocket Docs Logo">  
+    </div>
+    <div class="top-icons">
+      <!-- Optional: Add icons if needed -->
+    </div>
+  </header>
+<!-- UPLOAD -->
+
+<div class="upload-section">
+
+<h2>Upload File</h2>
+
+<form class="upload-form" id="uploadForm">
+
+<input type="file" id="fileInput">
+
+<input type="text" id="filename" placeholder="File name">
+
+<select id="template">
+
+<option value="general">General</option>
+<option value="Template 1">Certificate</option>
+<option value="Template 2">Invoice</option>
+<option value="Template 3">Policy</option>
+<option value="Template 4">Risk Assessment</option>
+<option value="Template 5">Quote</option>
+
+</select>
+
+<button class="upload-button">Upload</button>
+
+</form>
+
+</div>
+
+<!-- DRIVE -->
+
+<div class="drive-container">
+
+<div class="drive-sidebar">
+
+<h3>Folders</h3>
+
+<ul class="folder-list">
+
+<li class="folder-item active" data-folder="general">General</li>
+<li class="folder-item" data-folder="template1">Certificate</li>
+<li class="folder-item" data-folder="template2">Invoice</li>
+<li class="folder-item" data-folder="template3">Policy</li>
+<li class="folder-item" data-folder="template4">Risk Assessment</li>
+<li class="folder-item" data-folder="template5">Quotation</li>
+
+</ul>
+
+</div>
+
+<div class="drive-main">
+
+<input class="drive-search" id="searchBox" placeholder="Search files">
+
+<div id="fileManager" class="drive-files"></div>
+
+</div>
+
+</div>
+
+<!-- SCANNER -->
+
+<div class="scan-section">
+
+<h2>Scan Document</h2>
+
+<video id="video" autoplay></video>
+<canvas id="canvas"></canvas>
+
+<div class="scanner-controls">
+
+<button class="start-btn" id="startCamera">Start Camera</button>
+<button class="scan-btn" id="scan">Scan</button>
+<button class="download-btn" id="download">Download</button>
+<button class="retake-btn" id="retake">Retake</button>
+
+</div>
+
+</div>
+</section>
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-nav="dashboard">
+      <span class="nav-icon">
+        <a href="/html/Landing-page.html"><img src="/Icons/dashboards.svg" alt="Dashboard" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Dashboard</span>
+    </div>
+    <div class="nav-item" data-nav="documents">
+      <span class="nav-icon">
+        <a href="/html/use-template-page.html"><img src="/Icons/add-file.svg" alt="Documents" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Docs</span>
+    </div>
+    <div class="nav-item" data-nav="upload">
+      <span class="nav-icon">
+        <a href="/html/upload.html"><img src="/Icons/upload (1).svg" alt="Upload" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Upload</span>
+    </div>
+    <div class="nav-item" data-nav="scan">
+      <span class="nav-icon">
+        <a href="/html/scan.html"><img src="/Icons/scan.svg" alt="Scan" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Scan</span>
+    </div>
+    <div class="nav-item" data-nav="profile">
+      <span class="nav-icon">
+        <a href="/html/customer.html"><img src="/Icons/people (1).png" alt="Customers" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Customers</span>
+    </div>
+  </nav>
+</div>
+
+<script src="https://docs.opencv.org/4.x/opencv.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+/* FILE SYSTEM */
+
+const fileManager=document.getElementById("fileManager")
+const folders=document.querySelectorAll(".folder-item")
+const searchBox=document.getElementById("searchBox")
+
+let files=[]
+let currentFolder="general"
+
+folders.forEach(folder=>{
+
+folder.onclick=()=>{
+
+folders.forEach(f=>f.classList.remove("active"))
+folder.classList.add("active")
+
+currentFolder=folder.dataset.folder
+renderFiles()
+
+}
+
+})
+
+function addFile(name,folder){
+
+files.push({name,folder})
+renderFiles()
+
+}
+
+function renderFiles(){
+
+fileManager.innerHTML=""
+
+files
+.filter(f=>f.folder===currentFolder)
+.forEach(file=>{
+
+const div=document.createElement("div")
+
+div.className="file-card"
+div.draggable=true
+
+div.innerHTML=`
+<div class="file-icon">📄</div>
+<div class="file-name">${file.name}</div>
+`
+
+div.addEventListener("dragstart",e=>{
+e.dataTransfer.setData("file",file.name)
+})
+
+fileManager.appendChild(div)
+
+})
+
+}
+
+folders.forEach(folder=>{
+
+folder.addEventListener("dragover",e=>e.preventDefault())
+
+folder.addEventListener("drop",e=>{
+
+const name=e.dataTransfer.getData("file")
+
+files.forEach(f=>{
+if(f.name===name){
+f.folder=folder.dataset.folder
+}
+})
+
+renderFiles()
+
+})
+
+})
+
+searchBox.addEventListener("keyup",()=>{
+
+const value=searchBox.value.toLowerCase()
+
+document.querySelectorAll(".file-card").forEach(card=>{
+
+const name=card.innerText.toLowerCase()
+
+card.style.display=name.includes(value)?"block":"none"
+
+})
+
+})
+
+/* UPLOAD */
+
+const fileInput=document.getElementById("fileInput")
+const filename=document.getElementById("filename")
+const template=document.getElementById("template")
+
+fileInput.addEventListener("change",()=>{
+
+const file=fileInput.files[0]
+
+if(file){
+filename.value=file.name
+}
+
+})
+
+document.getElementById("uploadForm").addEventListener("submit",e=>{
+
+e.preventDefault()
+
+if(!filename.value) return
+
+addFile(filename.value,template.value)
+
+filename.value=""
+fileInput.value=""
+
+})
+
+/* SCANNER */
+
+const video=document.getElementById("video")
+const canvas=document.getElementById("canvas")
+
+document.getElementById("startCamera").onclick=async()=>{
+
+const stream=await navigator.mediaDevices.getUserMedia({video:true})
+video.srcObject=stream
+
+}
+
+document.getElementById("scan").onclick=()=>{
+
+canvas.width=video.videoWidth
+canvas.height=video.videoHeight
+
+const ctx=canvas.getContext("2d")
+ctx.drawImage(video,0,0)
+
+video.style.display="none"
+canvas.style.display="block"
+
+}
+
+document.getElementById("download").onclick=()=>{
+
+const link=document.createElement("a")
+link.download="scan.png"
+link.href=canvas.toDataURL()
+link.click()
+
+}
+
+document.getElementById("retake").onclick=()=>{
+
+canvas.style.display="none"
+video.style.display="block"
+
+}
+
+</script>
+
+</body>
+</html>

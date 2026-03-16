@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Pocket Docs upload</title>
+  <link rel="stylesheet" href="/css/Styles.css">
+</head>
+<body>
+
+<div class="dashboard-container">
+
+  <!-- Top Bar -->
+  <header class="top-bar">
+    <div class="logo">
+      <img src="/Icons/2 (1).png" alt="Pocket Docs Logo">  
+    </div>
+    <div class="top-icons">
+      <!-- Optional: Add icons if needed -->
+    </div>
+  </header>
+
+  <section class="upload-section">
+
+<h2 class="upload-title">Upload Documents</h2>
+
+<input type="text" id="searchBox" class="search-box" placeholder="Search files...">
+
+<form class="upload-form">
+
+<div class="upload-drop-area" id="dropArea">
+<p>Drag & Drop File</p>
+<input type="file" id="file" class="upload-input">
+<label for="file" class="upload-file-label">Browse</label>
+</div>
+
+<div id="previewContainer"></div>
+
+<div class="upload-field">
+<label>File Name</label>
+<input type="text" id="filename" class="upload-text-input">
+</div>
+
+<div class="upload-field">
+<label>Template Folder</label>
+<select id="template" class="upload-select">
+<option value="">Select</option>
+<option value="Template 1">Certificate</option>
+<option value="Template 2">Invoice</option>
+<option value="Template 3">policy</option>
+<option value="Template 4">Risk Assessment</option>
+<option value="Template 5">Quote</option>
+</select>
+</div>
+
+<div class="upload-progress-wrapper">
+<div id="progressBar" class="upload-progress-bar"></div>
+</div>
+
+<button class="upload-button">Upload</button>
+
+</form>
+
+<h3>Files</h3>
+
+<div id="fileManager" class="file-manager"></div>
+
+</section>
+
+  <nav class="bottom-nav">
+    <div class="nav-item active" data-nav="dashboard">
+      <span class="nav-icon">
+        <a href="/html/Landing-page.html"><img src="/Icons/dashboards.svg" alt="Dashboard" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Dashboard</span>
+    </div>
+    <div class="nav-item" data-nav="documents">
+      <span class="nav-icon">
+        <a href="/html/use-template-page.html"><img src="/Icons/add-file.svg" alt="Documents" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Docs</span>
+    </div>
+    <div class="nav-item" data-nav="upload">
+      <span class="nav-icon">
+        <a href="/html/upload.html"><img src="/Icons/upload (1).svg" alt="Upload" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Upload</span>
+    </div>
+    <div class="nav-item" data-nav="scan">
+      <span class="nav-icon">
+        <a href="/html/scan.html"><img src="/Icons/scan.svg" alt="Scan" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Scan</span>
+    </div>
+    <div class="nav-item" data-nav="profile">
+      <span class="nav-icon">
+        <a href="/html/customer.html"><img src="/Icons/people (1).png" alt="Customers" class="bottom-nav-icon"></a>
+      </span>
+      <span class="nav-text">Customers</span>
+    </div>
+  </nav>
+</div>
+
+<script>
+
+const fileInput = document.getElementById("file")
+const filenameInput = document.getElementById("filename")
+const previewContainer = document.getElementById("previewContainer")
+const fileManager = document.getElementById("fileManager")
+const progressBar = document.getElementById("progressBar")
+const searchBox = document.getElementById("searchBox")
+
+let selectedFile
+
+fileInput.addEventListener("change", () => {
+
+selectedFile = fileInput.files[0]
+
+if(!selectedFile) return
+
+filenameInput.value = selectedFile.name.split(".")[0]
+
+const url = URL.createObjectURL(selectedFile)
+
+if(selectedFile.type.startsWith("image")){
+previewContainer.innerHTML = `<img src="${url}" style="max-width:200px">`
+}
+
+else if(selectedFile.type === "application/pdf"){
+previewContainer.innerHTML = `<iframe src="${url}" width="200"></iframe>`
+}
+
+})
+
+document.querySelector(".upload-form").addEventListener("submit",function(e){
+
+e.preventDefault()
+
+let progress = 0
+
+const interval = setInterval(()=>{
+
+progress += 10
+progressBar.style.width = progress + "%"
+
+if(progress >= 100){
+
+clearInterval(interval)
+addFile()
+
+}
+
+},100)
+
+})
+
+function addFile(){
+
+const name = filenameInput.value
+const template = document.getElementById("template").value || "General"
+
+const div = document.createElement("div")
+div.className = "file-item"
+
+div.innerHTML = `
+<span class="file-name">${name}</span>
+<span>${template}</span>
+
+<div class="file-actions">
+<button onclick="deleteFile(this)">Delete</button>
+<button onclick="downloadFile('${name}')">Download</button>
+</div>
+`
+
+fileManager.appendChild(div)
+
+}
+
+function deleteFile(btn){
+btn.closest(".file-item").remove()
+}
+
+function renameFile(btn){
+
+const fileItem = btn.closest(".file-item")
+const nameSpan = fileItem.querySelector(".file-name")
+
+const newName = prompt("Rename file",nameSpan.innerText)
+
+if(newName){
+nameSpan.innerText = newName
+}
+
+}
+
+function downloadFile(name){
+
+alert("Downloading: "+name)
+
+}
+
+searchBox.addEventListener("keyup",function(){
+
+const value = this.value.toLowerCase()
+
+document.querySelectorAll(".file-item").forEach(file =>{
+
+const name = file.querySelector(".file-name").innerText.toLowerCase()
+
+file.style.display = name.includes(value) ? "flex" : "none"
+
+})
+
+})
+
+</script>
+
+</body>
+</html>
